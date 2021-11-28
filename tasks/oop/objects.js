@@ -21,7 +21,7 @@ const student = {
 		return `${this.grade}`;
 	}
 };
-Object.assign(student, person);
+Object.setPrototypeOf(student, person);
 
 /**
  * create new instance of student using Object.create
