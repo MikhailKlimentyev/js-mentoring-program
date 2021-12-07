@@ -22,7 +22,9 @@ const {
  * 
  */
 async function asyncPromiseResolve() {
-  //PLACE YOUR CODE HERE:
+  return await new Promise((resolve) => {
+    setTimeout(() => resolve('Resolved! with async await'), 1000)
+  });
 }
 
 /**
@@ -32,7 +34,9 @@ async function asyncPromiseResolve() {
  * @returns {Promise<"Rejected! with async await">}
  */
 async function asyncPromiseReject() {
-  //PLACE YOUR CODE HERE:
+  return await new Promise((reject) => {
+    setTimeout(() => reject('Rejected! with async await'), 1000)
+  });
 }
 
 /**
@@ -42,7 +46,7 @@ async function asyncPromiseReject() {
  * @returns 
  */
 async function asyncPromiseAll() {
-  //PLACE YOUR CODE HERE:
+  return await Promise.all([getDogs(), getCats(), getBirds()]);
 }
 
 module.exports = {
