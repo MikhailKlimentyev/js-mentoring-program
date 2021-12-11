@@ -32,7 +32,9 @@ function promiseReject() {
  * Should reject when param === false with "Rejected!" string
  */
 function fullPromise(param) {
-	return param === true ? Promise.resolve('Resolved!') : Promise.reject('Rejected!');
+	return new Promise(function (resolve, reject) {
+		param ? resolve('Resolved!') : reject('Rejected!');
+	})
 }
 
 /**

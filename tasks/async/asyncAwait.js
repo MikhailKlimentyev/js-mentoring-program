@@ -22,9 +22,7 @@ const {
  * 
  */
 async function asyncPromiseResolve() {
-  return await new Promise((resolve) => {
-    setTimeout(() => resolve('Resolved! with async await'), 1000)
-  });
+  return await promiseResolve() + ' with async await';
 }
 
 /**
@@ -34,9 +32,11 @@ async function asyncPromiseResolve() {
  * @returns {Promise<"Rejected! with async await">}
  */
 async function asyncPromiseReject() {
-  return await new Promise((reject) => {
-    setTimeout(() => reject('Rejected! with async await'), 1000)
-  });
+  try {
+    await promiseReject()
+  } catch (error) {
+    return error + ' with async await';
+  }
 }
 
 /**
