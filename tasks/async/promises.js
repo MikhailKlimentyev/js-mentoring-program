@@ -12,9 +12,8 @@ const {
  * @returns {Promise<"Resolved!">}
  * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
  */
-
 function promiseResolve() {
-	//PLACE YOUR CODE HERE:
+	return Promise.resolve('Resolved!');
 }
 
 /**
@@ -23,9 +22,8 @@ function promiseResolve() {
  * @returns {Promise<"Rejected!">}
  * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject
  */
-
 function promiseReject() {
-	//PLACE YOUR CODE HERE:
+	return Promise.reject('Rejected!');
 }
 
 /**
@@ -33,9 +31,10 @@ function promiseReject() {
  * Should resolve when param === true with "Resolved!" string
  * Should reject when param === false with "Rejected!" string
  */
-
 function fullPromise(param) {
-	//PLACE YOUR CODE HERE:
+	return new Promise(function (resolve, reject) {
+		param ? resolve('Resolved!') : reject('Rejected!');
+	})
 }
 
 /**
@@ -48,9 +47,14 @@ function fullPromise(param) {
 let chainingResult = '';
 
 async function promisesChaining() {
-	//PLACE YOUR CODE HERE:
+	return firstPromise()
+		.then((firstPromiseResult) => {
+			chainingResult = firstPromiseResult;
+			return secondPromise();
+		}).then((secondPromiseResult) => {
+			return chainingResult += ' ' + secondPromiseResult;
+		});
 }
-
 
 /**
  * Task-5: Implement a function getAnimals() that will return the result of
@@ -59,9 +63,8 @@ async function promisesChaining() {
  * @returns {Promise<"["dogs", "cats", "birds"]">}
  * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
  */
-
 async function getAnimals() {
-	//PLACE YOUR CODE HERE:
+	return Promise.all([getDogs(), getCats(), getBirds()]);
 }
 
 module.exports = {
