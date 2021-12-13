@@ -30,12 +30,7 @@ const sendRequest = async () => {
 	const filteredJson = json.filter(function (post) {
 		return post.id < 20;
 	});
-	await fs.writeFile('./tasks/nodeJs/fetch/response.json', JSON.stringify(filteredJson, null, '\t'), err => {
-		if (err) {
-			throw err;
-		}
-		console.log('The file is created!');
-	});
+	await fs.writeFile('./tasks/nodeJs/fetch/response.json', JSON.stringify(filteredJson, null, '\t'));
 };
 
 
