@@ -24,23 +24,14 @@
 const fs = require('fs');
 
 const jsonParser = () => {
-	fs.readFile('./tasks/nodeJs/parser/test.json', 'utf-8', (err, content) => {
-		if (err) {
-			console.log(err);
-		}
-		const parsed = JSON.parse(content)
-			.list.entries
-			.map((entries) => "http://doc.epam.com/" + entries.entry.name.slice(0, -5))
-			.map((docId) => ({
-				'docId': docId
-			}));
-		fs.writeFile('./tasks/nodeJs/parser/parsed.json', JSON.stringify(parsed), err => {
-			if (err) {
-				console.log(err);
-			}
-			console.log('the file is created')
-		})
-	})
+	const content = require('./test.json');
+	const parsed = JSON.parse(JSON.stringify(content))
+		.list.entries
+		.map((entries) => "http://doc.epam.com/" + entries.entry.name.slice(0, -5))
+		.map((docId) => ({
+			'docId': docId
+		}));
+	fs.writeFileSync('./tasks/nodeJs/parser/parsed.json', JSON.stringify(parsed));
 };
 
 module.exports = {
